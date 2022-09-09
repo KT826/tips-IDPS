@@ -93,17 +93,21 @@ DropFrame = [find(isnan(CC_mean)),find(isoutlier(CC_mean,'grubbs'))];
 %%% figure %%%
 figure
 subplot(5,1,1:3)
-imagesc(CC); colorbar('north'); title(filename)
+imagesc(CC); colorbar('north'); title(filename); xlim([1 numel(CC_mean)])
+
 subplot(5,1,4)
-imagesc(CC_mean); colorbar('north'); subtitle('mean'); yticklabels([])
+imagesc(CC_mean); colorbar('north'); subtitle('mean'); yticklabels([]); xlim([1 numel(CC_mean)])
 
 subplot(5,1,5)
 plot([1:numel(CC_mean)],CC_mean)
 hold on
 scatter(DropFrame,zeros(1,numel(DropFrame))+min(CC_mean),'*')
+xlim([1 numel(CC_mean)])
 title(['N of dropped frame = ', num2str(numel(DropFrame))])
 saveas(gcf,[Dir.export,'/DroppedFrameInfo',filename,'.tif'])
 close
+
+
 %%% Drop frames with z-artifact%%%
 if ~isempty(DropFrame)
     DropFrame = DropFrame';
