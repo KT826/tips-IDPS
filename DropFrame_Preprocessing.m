@@ -2,7 +2,7 @@
 Processing of IDPS imaging data from inscopix miniscope.
 
 <Procedure>
-(1) Find out frames with large z-artifact. Calculate correlation coefficient b/w frames and convert them into "drop frame"
+(1) Find out frames with large z-artifact. Calculate correlation coefficient b/w frames and convert low-CC of them to "droped" frame.
 (2) Preprocessing for the post dropped data. (Resampling -> Bandpass filter -> Motion correction -> dF/F, CNMFe)
 
 %}
